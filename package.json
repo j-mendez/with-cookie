@@ -1,0 +1,32 @@
+{
+  "name": "with-cookie",
+  "version": "1.2.2",
+  "description": "auto bind object properties to store and retrieve values using cookies easily",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "prepare": "tsc"
+  },
+  "keywords": [
+    "cookie",
+    "auto-cookie",
+    "with-cookie",
+    "cookies",
+    "auto-bind-to-cookie"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/A11yWatch/with-cookie.git"
+  },
+  "author": "Jeffrey Mendez <jeffmendez19@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A11yWatch/with-cookie/issues"
+  },
+  "homepage": "https://github.com/A11yWatch/with-cookie#readme",
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "typescript": "^3.7.5"
+  }
+}
