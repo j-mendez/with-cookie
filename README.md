@@ -13,19 +13,17 @@ $ yarn add with-cookie
 ```typescript
 import { withCookie } from "with-cookie";
 
-const User = {
+const user = withCookie({
   isLoggedIn: false,
   email: "",
   sports: ["football"],
   health: { height: "6ft", eyeColor: "blue" },
   someMethod: () => {} // <-- funcs, getters, and setters are not stored
-};
+});
 
-const user = withCookie(User);
+user.email = "somemail@gmail.com"; // <-- cookie created
 
-user.email = "somemail@gmail.com";
-
-console.log(user.email); //  <-- 'somemail@gmail.com' and cookie created
+console.log(user.email); //  <-- 'somemail@gmail.com'
 // RESTART application and remove setting your email above - try logging the same property
 console.log(user.email); // <-- 'somemail@gmail.com' is still there
 
@@ -94,7 +92,7 @@ This package is actively being used on [a11ywatch](https://www.a11ywatch.com)
 
 ## More Info
 
-Currently all cookies are created after you set your properties to a new value.
+Currently all cookies are created after you set your properties to a new value to keep things dynamic to the program.
 
 ## TODO
 
