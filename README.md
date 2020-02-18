@@ -13,13 +13,15 @@ $ yarn add with-cookie
 ```typescript
 import { withCookie } from "with-cookie";
 
-const UserModel = {
+const User = {
   isLoggedIn: false,
   email: "",
+  sports: ["football"],
+  health: { height: "6ft", eyeColor: "blue" },
   someMethod: () => {} // <-- func, getters, and setters are ignored
 };
 
-const user = Object.create(withCookie(UserModel));
+const user = Object.create(withCookie(User));
 
 user.email = "someemail@gmail.com";
 
@@ -37,13 +39,13 @@ with classes
 ```typescript
 import { withCookie, getCookie } from "with-cookie";
 
-class UserModel {
+class User {
   isLoggedIn: false,
   email: "",
   someMethod: () => {}
 };
 
-const user =  withCookie(new UserModel())
+const user =  withCookie(new User())
 
 user.email = "someemail@gmail.com";
 
@@ -55,24 +57,24 @@ console.log(getCookie("email_cookie")); // <-- 'someemail@gmail.com'
 
 ## Available Configuration
 
-| param      | default | type   | description                                                 |
-| ---------- | ------- | ------ | ----------------------------------------------------------- |
-| defaultExp | 30      | number | Optional: A default expire date for all cookies in days     |
-| noCookie   | [""]    | array  | Optional: A list of property keys as strings to not store   |
-| ssCookie   | ""      | string | Optional: A cookie if rendered on the server without nextjs |
+| param      | default | type   | description                                               |
+| ---------- | ------- | ------ | --------------------------------------------------------- |
+| defaultExp | 30      | number | Optional: A default expire date for all cookies in days   |
+| noCookie   | [""]    | array  | Optional: A list of property keys as strings to not store |
+| ssCookie   | ""      | string | Optional: A cookie if rendered on the server to extract   |
 
 Example adjusting configuration. Simply pass in the object as the second param.
 
 ```typescript
 import { withCookie } from "with-cookie";
 
-const UserModel = {
+const User = {
   isLoggedIn: false,
   email: ""
 };
 
 const user = Object.create(
-  withCookie(UserModel, { defaultExp: 10, noCache: ["email"] })
+  withCookie(User, { defaultExp: 10, noCache: ["email"] })
 );
 ```
 
