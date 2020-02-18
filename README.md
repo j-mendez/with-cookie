@@ -21,13 +21,13 @@ const User = {
   someMethod: () => {} // <-- funcs, getters, and setters are ignored
 };
 
-const user = Object.create(withCookie(User));
+const user = withCookie(User);
 
 user.email = "somemail@gmail.com";
 
-console.log(user.email); //  <-- 'someemail@gmail.com'
+console.log(user.email); //  <-- 'somemail@gmail.com' and cookie created
 // RESTART application and remove setting your email above - try logging the same property
-console.log(user.email); // <-- 'someemail@gmail.com' is still there
+console.log(user.email); // <-- 'somemail@gmail.com' is still there
 
 // DESTROY cookie simply just re-assign the value to "", undefined, or delete obj.key.
 // setting value to undefined reverts to static defaults upon reload
@@ -39,13 +39,14 @@ class example
 ```typescript
 import { withCookie, getCookie } from "with-cookie";
 
+@withCookie
 class User {
   isLoggedIn: false,
   email: "",
   someMethod: () => {}
 };
 
-const user =  withCookie(new User())
+const user =  new User()
 
 user.email = "somemail@gmail.com";
 
@@ -73,9 +74,7 @@ const User = {
   email: ""
 };
 
-const user = Object.create(
-  withCookie(User, { defaultExp: 10, noCookie: ["email"] })
-);
+const user = withCookie(User, { defaultExp: 10, noCookie: ["email"] });
 ```
 
 ![example ssr](https://j.gifs.com/ZYDEZv.gif)
@@ -88,6 +87,11 @@ For more help getting started take a look at the example using create-next-app w
 
 This package is actively being used on [a11ywatch](https://www.a11ywatch.com)
 
+## More Info
+
+Currently all cookies are created after you set your properties to a new value.
+
 ## TODO
 
 1. Add util method examples on readme. Currently util methods include `setCookie` and `getCookie` which can be imported with the package. Check the `src/utils` folder for more details on usage.
+2. Add option to create cookie upon instantiation.

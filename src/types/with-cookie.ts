@@ -10,8 +10,8 @@ export type WithCookie<I = any, C = ConfigCookie> = (
   config: C
 ) => I;
 
-interface ConfigCookie {
+export interface ConfigCookie {
   defaultExp: number;
-  noCookie?: [string];
-  ssCookie?: string;
+  noCookie?: [string] | null;
+  ssCookie?: string | null;
 }

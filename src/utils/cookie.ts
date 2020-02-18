@@ -22,9 +22,8 @@ export function setCookie(
   }
 }
 
-export function getCookie(cname: string, cookie: string | string[]): any {
+export function getCookie(cname: string, ca?: string | string[] | null): any {
   let name = cname + "=";
-  let ca = cookie;
 
   if (
     !ca &&
