@@ -18,12 +18,12 @@ const User = {
   email: "",
   sports: ["football"],
   health: { height: "6ft", eyeColor: "blue" },
-  someMethod: () => {} // <-- func, getters, and setters are ignored
+  someMethod: () => {} // <-- funcs, getters, and setters are ignored
 };
 
 const user = Object.create(withCookie(User));
 
-user.email = "someemail@gmail.com";
+user.email = "somemail@gmail.com";
 
 console.log(user.email); //  <-- 'someemail@gmail.com'
 // RESTART application and remove setting your email above - try logging the same property
@@ -47,7 +47,7 @@ class User {
 
 const user =  withCookie(new User())
 
-user.email = "someemail@gmail.com";
+user.email = "somemail@gmail.com";
 
 // check to see if cookie exist with cookie util.
 // All cookies are stored in the format `key` + `_ck`
@@ -74,7 +74,7 @@ const User = {
 };
 
 const user = Object.create(
-  withCookie(User, { defaultExp: 10, noCache: ["email"] })
+  withCookie(User, { defaultExp: 10, noCookie: ["email"] })
 );
 ```
 

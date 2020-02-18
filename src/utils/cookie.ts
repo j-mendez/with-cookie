@@ -14,10 +14,7 @@ export function setCookie(
     navigator.cookieEnabled
   ) {
     const cok =
-      cvalue &&
-      (cvalue === "[object Object]" ||
-        cvalue.constructor.name === "Object" ||
-        Array.isArray(cvalue))
+      cvalue && (typeof cvalue === "object" || Array.isArray(cvalue))
         ? JSON.stringify(cvalue)
         : cvalue;
 
@@ -51,8 +48,9 @@ export function getCookie(cname: string, cookie: string | string[]): any {
           const cjp = cok.length >= 2;
 
           if (
-            (cjp && cok[0] === "{" && cok[cok.length - 1] === "}") ||
-            (cjp && cok[0] === "[" && cok[cok.length - 1] === "]")
+            cjp &&
+            ((cok[0] === "{" && cok[cok.length - 1] === "}") ||
+              (cok[0] === "[" && cok[cok.length - 1] === "]"))
           ) {
             return JSON.parse(cok);
           } else if (cok === "false") {
