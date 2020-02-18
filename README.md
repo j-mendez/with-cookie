@@ -18,7 +18,7 @@ const User = {
   email: "",
   sports: ["football"],
   health: { height: "6ft", eyeColor: "blue" },
-  someMethod: () => {} // <-- funcs, getters, and setters are ignored
+  someMethod: () => {} // <-- funcs, getters, and setters are not stored
 };
 
 const user = withCookie(User);
@@ -52,7 +52,7 @@ user.email = "somemail@gmail.com";
 
 // check to see if cookie exist with cookie util.
 // All cookies are stored in the format `key` + `_ck`
-console.log(getCookie("email_cookie")); // <-- 'someemail@gmail.com'
+console.log(getCookie("email_ck")); // <-- 'someemail@gmail.com'
 
 ```
 
@@ -71,17 +71,22 @@ import { withCookie } from "with-cookie";
 
 const User = {
   isLoggedIn: false,
-  email: ""
+  email: "",
+  card: {
+    number: "",
+    exp: "",
+    cvc: ""
+  }
 };
 
-const user = withCookie(User, { defaultExp: 10, noCookie: ["email"] });
+const user = withCookie(User, { defaultExp: 360 * 10, noCookie: ["card"] });
 ```
 
 ![example ssr](https://j.gifs.com/ZYDEZv.gif)
 
 ## About
 
-The main purpose of this package is to control dynamic SSR pages without having to manage complicated logic. Simple just wrap your object and all of the properties are stored and retrieved as cookies. Make sure to adjust your fetch creds to prevent cookies being sent outside your domain for every resource. For more info checkout [mozilla-web-api](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
+The main purpose of this package is to control dynamic SSR pages without having to manage complicated logic. Simple just wrap your object and all of the properties are stored and retrieved as cookies. Make sure to adjust your fetch creds to prevent cookies being sent outside your domain for every resource. For more info checkout [mozilla-web-api](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters). Be careful about storing all props to cookies due to cookies being transfered per request, only store the properties you need to be dynamic.
 
 For more help getting started take a look at the example using create-next-app with SSR dynamic pages [example-app](https://github.com/A11yWatch/with-cookie-example)
 
