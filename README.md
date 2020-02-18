@@ -87,3 +87,7 @@ The main purpose of this package is to control dynamic SSR pages without having 
 For more help getting started take a look at the example using create-next-app with SSR dynamic pages [example-app](https://github.com/A11yWatch/with-cookie-example)
 
 This package is actively being used on [a11ywatch](https://www.a11ywatch.com)
+
+## TODO
+
+1. Add util method examples on readme. Currently util methods include `setCookie` and `getCookie` which can be imported with the package. Check the `src/utils` folder for more details on usage.
