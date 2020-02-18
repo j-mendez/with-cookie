@@ -14,8 +14,10 @@ export function setCookie(
     navigator.cookieEnabled
   ) {
     const cok =
-      (cvalue && cvalue === "[object Object]") ||
-      (cvalue && cvalue.constructor.name === "Object")
+      cvalue &&
+      (cvalue === "[object Object]" ||
+        cvalue.constructor.name === "Object" ||
+        Array.isArray(cvalue))
         ? JSON.stringify(cvalue)
         : cvalue;
 
@@ -46,11 +48,11 @@ export function getCookie(cname: string, cookie: string | string[]): any {
         let cok = c.substring(name.length, c.length);
 
         if (cok) {
+          const cjp = cok.length >= 2;
+
           if (
-            typeof cok === "string" &&
-            cok.length >= 2 &&
-            cok[0] === "{" &&
-            cok[cok.length - 1] === "}"
+            (cjp && cok[0] === "{" && cok[cok.length - 1] === "}") ||
+            (cjp && cok[0] === "[" && cok[cok.length - 1] === "]")
           ) {
             return JSON.parse(cok);
           } else if (cok === "false") {
