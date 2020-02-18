@@ -37,14 +37,13 @@ with classes
 ```typescript
 import { withCookie, getCookie } from "with-cookie";
 
-@withCookie
 class UserModel {
   isLoggedIn: false,
   email: "",
   someMethod: () => {}
 };
 
-const user =  new UserModel()
+const user =  withCookie(new UserModel())
 
 user.email = "someemail@gmail.com";
 
@@ -62,7 +61,7 @@ console.log(getCookie("email_cookie")); // <-- 'someemail@gmail.com'
 | noCookie   | [""]    | array  | Optional: A list of property keys as strings to not store   |
 | ssCookie   | ""      | string | Optional: A cookie if rendered on the server without nextjs |
 
-Example adjusting configuration. Simply pass in the object as the second param
+Example adjusting configuration. Simply pass in the object as the second param.
 
 ```typescript
 import { withCookie } from "with-cookie";

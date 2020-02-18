@@ -13,7 +13,13 @@ export function setCookie(
     typeof navigator !== "undefined" &&
     navigator.cookieEnabled
   ) {
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    const cok =
+      (cvalue && cvalue === "[object Object]") ||
+      (cvalue && cvalue.constructor.name === "Object")
+        ? JSON.stringify(cvalue)
+        : cvalue;
+
+    document.cookie = cname + "=" + cok + ";" + expires + ";path=/";
   }
 }
 
@@ -39,7 +45,25 @@ export function getCookie(cname: string, cookie: string | string[]): any {
       if (c.indexOf(name) == 0) {
         let cok = c.substring(name.length, c.length);
 
-        return cok && cok !== "false" ? cok : false;
+        if (cok) {
+          if (
+            typeof cok === "string" &&
+            cok.length >= 2 &&
+            cok[0] === "{" &&
+            cok[cok.length - 1] === "}"
+          ) {
+            return JSON.parse(cok);
+          } else if (cok === "false") {
+            return false;
+          } else if (cok === "null") {
+            return null;
+          } else if (cok === "undefined") {
+            return undefined;
+          } else {
+            return cok;
+          }
+        }
+        return "";
       }
     }
   }
