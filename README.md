@@ -49,7 +49,7 @@ const user =  new UserModel()
 user.email = "someemail@gmail.com";
 
 // check to see if cookie exist with cookie util.
-// All cookies are stored in the format `key` + `_cookie`
+// All cookies are stored in the format `key` + `_ck`
 console.log(getCookie("email_cookie")); // <-- 'someemail@gmail.com'
 
 ```
@@ -59,7 +59,7 @@ console.log(getCookie("email_cookie")); // <-- 'someemail@gmail.com'
 | param      | default | type   | description                                                 |
 | ---------- | ------- | ------ | ----------------------------------------------------------- |
 | defaultExp | 30      | number | Optional: A default expire date for all cookies in days     |
-| noCache    | []      | array  | Optional: A list of property keys to not store in cookies   |
+| noCookie   | [""]    | array  | Optional: A list of property keys as strings to not store   |
 | ssCookie   | ""      | string | Optional: A cookie if rendered on the server without nextjs |
 
 Example adjusting configuration. Simply pass in the object as the second param

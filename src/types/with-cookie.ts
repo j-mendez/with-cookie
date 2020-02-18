@@ -12,6 +12,6 @@ export type WithCookie<I = any, C = ConfigCookie> = (
 
 interface ConfigCookie {
   defaultExp: number;
-  noCache?: [string];
+  noCookie?: [string];
   ssCookie?: string;
 }

@@ -5,9 +5,9 @@ export function setCookie(
   cvalue: any,
   exdays: number = 365
 ): void {
-  var d = new Date();
+  let d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toUTCString();
+  let expires = "expires=" + d.toUTCString();
   if (
     typeof document !== "undefined" &&
     typeof navigator !== "undefined" &&
@@ -18,8 +18,8 @@ export function setCookie(
 }
 
 export function getCookie(cname: string, cookie: string | string[]): any {
-  var name = cname + "=";
-  var ca = cookie;
+  let name = cname + "=";
+  let ca = cookie;
 
   if (
     !ca &&
@@ -32,12 +32,12 @@ export function getCookie(cname: string, cookie: string | string[]): any {
   }
   if (ca && ca.length) {
     for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
+      let c = ca[i];
       while (c.charAt(0) == " ") {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
-        var cok = c.substring(name.length, c.length);
+        let cok = c.substring(name.length, c.length);
 
         return cok && cok !== "false" ? cok : false;
       }
