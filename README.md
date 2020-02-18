@@ -26,15 +26,15 @@ const user = Object.create(withCookie(User));
 user.email = "someemail@gmail.com";
 
 console.log(user.email); //  <-- 'someemail@gmail.com'
-
-// Restart application and remove setting your email above - try logging the same property
+// RESTART application and remove setting your email above - try logging the same property
 console.log(user.email); // <-- 'someemail@gmail.com' is still there
 
-// destroy cookie simply just re-assign the value to null, "", undefined, or delete obj.key
+// DESTROY cookie simply just re-assign the value to "", undefined, or delete obj.key.
+// setting value to undefined reverts to static defaults upon reload
 user.email = "";
 ```
 
-with classes
+class example
 
 ```typescript
 import { withCookie, getCookie } from "with-cookie";
