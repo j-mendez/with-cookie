@@ -18,7 +18,7 @@ const user = withCookie({
   email: "",
   sports: ["football"],
   health: { height: "6ft", eyeColor: "blue" },
-  someMethod: () => {} // <-- funcs, getters, and setters are not stored
+  updateName: () => {} // <-- funcs are ignored
 });
 
 user.email = "somemail@gmail.com"; // <-- cookie created
@@ -64,8 +64,6 @@ console.log(getCookie("email_ck")); // <-- 'someemail@gmail.com'
 Example adjusting configuration. Simply pass in the object as the second param.
 
 ```typescript
-import { withCookie } from "with-cookie";
-
 const User = {
   isLoggedIn: false,
   email: "",
@@ -97,11 +95,9 @@ Currently all cookies are created after you set your properties to a new value t
 
 1. Add util method examples on README. Currently util methods include `setCookie` and `getCookie` which can be imported with the package. Check the `src/utils` folder for more details on usage.
 2. Add option to create cookie upon instantiation.
-3. Add ability to wrap key with-cookie like this for a key level cookie
+3. Add ability to wrap key with-cookie like this for a key level cookie ex below
 
 ```typescript
-import { withCookie } from "with-cookie";
-
 const user = {
   @withCookie
   isLoggedIn: false,
@@ -114,3 +110,5 @@ const user = {
 };
 
 ```
+
+4. Look into adding method -> cookie purposes
