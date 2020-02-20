@@ -97,3 +97,20 @@ Currently all cookies are created after you set your properties to a new value t
 
 1. Add util method examples on README. Currently util methods include `setCookie` and `getCookie` which can be imported with the package. Check the `src/utils` folder for more details on usage.
 2. Add option to create cookie upon instantiation.
+3. Add ability to wrap key with-cookie like this for a key level cookie
+
+```typescript
+import { withCookie } from "with-cookie";
+
+const user = {
+  @withCookie
+  isLoggedIn: false,
+  email: "",
+  card: {
+    number: "",
+    exp: "",
+    cvc: ""
+  }
+};
+
+```
