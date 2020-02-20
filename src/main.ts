@@ -15,30 +15,27 @@ export function withCookie(instance, cc): WithCookie {
       !methodType.get &&
       !methodType.set
     ) {
-      const blocksave = noCookie && noCookie.indexOf(key) !== -1;
+      const blockS = noCookie && noCookie.indexOf(key) !== -1;
       const cookieName = `${key}_ck`;
-
-      let keyV =
-        (!blocksave && getCookie(cookieName, ssCookie)) || instance[key];
-
-      if (blocksave) {
-        Object.defineProperty(instance, key, {
-          value: keyV,
-          enumerable: true
-        });
-      } else {
-        Object.defineProperty(instance, key, {
-          set: function(value) {
-            keyV = value;
-            if (!blocksave) {
-              setCookie(cookieName, value, defaultExp);
-            }
-          },
-          get: function() {
-            return keyV;
+      let keyV = (!blockS && getCookie(cookieName, ssCookie)) || instance[key];
+      const objD = blockS
+        ? {
+            value: keyV,
+            enumerable: true
           }
-        });
-      }
+        : {
+            set: function(value) {
+              keyV = value;
+              if (!blockS) {
+                setCookie(cookieName, value, defaultExp);
+              }
+            },
+            get: function() {
+              return keyV;
+            }
+          };
+
+      Object.defineProperty(instance, key, objD);
     }
   });
 

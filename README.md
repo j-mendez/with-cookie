@@ -1,6 +1,6 @@
 ## with-cookie
 
-A package that auto bind properties to cookies for persistance and easy manipulation. Great for dynamic SSR pages. Tiny only 2kb total.
+A package that auto binds object or class properties to cookies for persistance and easy manipulation. Great for dynamic SSR pages. So simple you do not even have to think about it. Tiny only 2kb total.
 
 ## Installation Instructions
 
@@ -41,7 +41,6 @@ import { withCookie, getCookie } from "with-cookie";
 class User {
   isLoggedIn: false,
   email: "",
-  someMethod: () => {}
 };
 
 const user =  new User()
@@ -96,5 +95,5 @@ Currently all cookies are created after you set your properties to a new value t
 
 ## TODO
 
-1. Add util method examples on readme. Currently util methods include `setCookie` and `getCookie` which can be imported with the package. Check the `src/utils` folder for more details on usage.
+1. Add util method examples on README. Currently util methods include `setCookie` and `getCookie` which can be imported with the package. Check the `src/utils` folder for more details on usage.
 2. Add option to create cookie upon instantiation.
