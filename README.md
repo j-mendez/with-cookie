@@ -56,11 +56,12 @@ console.log(getCookie("user_email")); // <-- 'somemail@gmail.com'
 
 ## Available Configuration
 
-| param      | default | type   | description                                               |
-| ---------- | ------- | ------ | --------------------------------------------------------- |
-| defaultExp | 30      | number | Optional: A default expire date for all cookies in days   |
-| noCookie   | [""]    | array  | Optional: A list of property keys as strings to not store |
-| ssCookie   | ""      | string | Optional: A cookie if rendered on the server to extract   |
+| param      | default          | type   | description                                               |
+| ---------- | ---------------- | ------ | --------------------------------------------------------- |
+| defaultExp | 30               | number | Optional: A default expire date for all cookies in days   |
+| noCookie   | [""]             | array  | Optional: A list of property keys as strings to not store |
+| ssCookie   | ""               | string | Optional: A cookie if rendered on the server to extract   |
+| name       | constructor.name | string | Optional: A keyname for anonymous objects.                |
 
 Example adjusting configuration. Simply pass in the object as the second param.
 

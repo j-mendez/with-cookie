@@ -4,6 +4,7 @@ export function getConfig(cc: ConfigCookie): ConfigCookie {
   let defaultExp = 30;
   let noCookie;
   let ssCookie;
+  let name;
 
   if (cc) {
     if (typeof cc.defaultExp === "number") {
@@ -17,11 +18,16 @@ export function getConfig(cc: ConfigCookie): ConfigCookie {
     if (typeof cc.ssCookie === "string") {
       ssCookie = cc.ssCookie;
     }
+
+    if (typeof cc.name === "string") {
+      name = cc.name;
+    }
   }
 
   return {
     defaultExp,
     noCookie,
-    ssCookie
+    ssCookie,
+    name
   };
 }

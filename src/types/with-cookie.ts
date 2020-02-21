@@ -14,4 +14,5 @@ export interface ConfigCookie {
   defaultExp: number;
   noCookie?: [string] | null;
   ssCookie?: string | null;
+  name?: string | null;
 }

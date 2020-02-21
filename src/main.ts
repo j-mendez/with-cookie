@@ -4,24 +4,13 @@ import { setCookie, getCookie } from "./utils";
 import { getConfig } from "./config";
 import { WithCookie } from "./types/with-cookie";
 
-const structNames = {};
-
 export function withCookie(instance, cc): WithCookie {
   if (!instance) {
     throw Error("Error: object, function or class required as first param");
   }
-  const { noCookie, ssCookie, defaultExp } = getConfig(cc);
-
-  let instanceName =
-    (instance.constructor && instance.constructor.name) || "Object";
-
-  if (structNames[instanceName]) {
-    instanceName = instanceName + structNames[instanceName];
-  }
-
-  structNames[instanceName] = !structNames[instanceName]
-    ? 1
-    : structNames[instanceName] + 1;
+  const { noCookie, ssCookie, defaultExp, name } = getConfig(cc);
+  const instanceName =
+    name || (instance.constructor && instance.constructor.name) || "Object";
 
   Object.keys(instance).forEach(function(key) {
     const methodType = Object.getOwnPropertyDescriptor(instance, key);
