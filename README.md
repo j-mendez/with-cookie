@@ -48,8 +48,9 @@ const user =  new User()
 user.email = "somemail@gmail.com";
 
 // check to see if cookie exist with cookie util.
-// All cookies are stored in the format `key` + `_ck`
-console.log(getCookie("email_ck")); // <-- 'someemail@gmail.com'
+// All cookies are stored in the format `${constructorName}_{$key}`
+// if anonymous constructorName is incremented by executation order constructorName1, constructorName2, etc
+console.log(getCookie("user_email")); // <-- 'somemail@gmail.com'
 
 ```
 
