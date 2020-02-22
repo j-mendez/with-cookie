@@ -1,6 +1,6 @@
 {
   "name": "with-cookie",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "auto bind object properties to store and retrieve values using cookies easily",
   "main": "dist/index.js",
   "types": "types/index.d.ts",

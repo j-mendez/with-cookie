@@ -22,7 +22,7 @@ export function withCookie(ins, cc): WithCookie {
       !methodType.set
     ) {
       const blockS = noCookie && noCookie.indexOf(key) !== -1;
-      const cookieName = `${instanceName.toLowerCase()}_${key}`;
+      const cookieName = `${instanceName}_${key}`;
       let keyV = (!blockS && getCookie(cookieName, ssCookie)) || instance[key];
       const objD = blockS
         ? {
